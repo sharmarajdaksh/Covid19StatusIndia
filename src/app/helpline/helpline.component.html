@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+<div >
+    <h2 class="text-center display-4">Search for the Helplines details!</h2>
+    <form [formGroup]=searchHelplineForm (ngSubmit)="showHelplines()">
+        <div class="row">
+        <div class="form-group offset-2 col-md-3">
+            <label for="state">Select the state</label>
+            <select class="form-control" formControlName="state" id="state">
+                <option *ngFor="let state of statesList" value={{state}}>{{state}}</option>
+            </select>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="service">Select the service</label>
+            <select class="form-control" formControlName="service" id="service">
+                <option value="all">All Services</option>
+                <option *ngFor="let service of servicesList" value={{service}}>{{service}}</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success" style="height: 35px;margin-top: 32px;">Search</button>
+    </div>   
+    </form>
+</div>
+
+
+<div *ngIf="result.length>0">
+    <table class="table table-striped offset-1 col-md-10">
+            <tr>
+                <th scope="col">Category</th>
+                <th scope="col">State</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Organization</th>
+              </tr>
+       
+        <tr *ngFor="let i of result" scope="row">
+            <td>{{i.category}}</td>
+            <td>{{i.state}}</td>
+            <td>{{i.phonenumber}}</td>
+            <td>{{i.nameoftheorganisation}}</td>
+        </tr>
+    </table>
+</div>

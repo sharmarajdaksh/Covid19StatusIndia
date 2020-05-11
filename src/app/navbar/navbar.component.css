@@ -6,7 +6,7 @@ a {
 
 }
 li :hover{
-    background-color: grey;
+    background-color: rgb(84, 238, 212);
 }
 
 ul{
@@ -20,5 +20,6 @@ ul{
 }
 
 .current{
-    background-color: rgb(19, 204, 173);
+    border: 1px solid rgb(19, 204, 173);
+    border-radius: 6%;
 }
