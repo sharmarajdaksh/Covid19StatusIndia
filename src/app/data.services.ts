@@ -16,6 +16,8 @@ export class DataService {
       return this.http.get<Data>("https://api.covid19india.org/data.json")
   }
 
+
+
   getHelplines():Observable<any[]>{
  
     return this.http.get<Helpline>("https://api.covid19india.org/resources/resources.json").pipe(map(res=>{
@@ -24,6 +26,10 @@ export class DataService {
       return list;
 
     }))
+  }
+
+  getDistricts():Observable<any>{
+    return this.http.get<any>("https://api.covid19india.org/state_district_wise.json");
   }
 
 }

@@ -22,7 +22,8 @@
 </div>
 
 
-<div *ngIf="result.length>0">
+<div *ngIf="result.length>0" style="margin-top: 20px;">
+    <h4 class="text-center display-4">List of services</h4>
     <table class="table table-striped offset-1 col-md-10">
             <tr>
                 <th scope="col">Category</th>
@@ -38,4 +39,8 @@
             <td>{{i.nameoftheorganisation}}</td>
         </tr>
     </table>
+</div>
+
+<div *ngIf="result.length==0 && flag">
+    <h2 class="text-center display-4 text-danger">No services Available!</h2>
 </div>

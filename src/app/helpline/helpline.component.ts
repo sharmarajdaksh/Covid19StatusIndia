@@ -11,35 +11,37 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class HelplineComponent implements OnInit {
   helplines:any[];
   result: any[]=[];
+  flag:boolean;
 
   constructor(public dataserv: DataService, private fb: FormBuilder) { }
   
   searchHelplineForm: FormGroup;
 
   statesList= ["Andaman & Nicobar","Andhra Pradesh","Assam","Bihar","Chandigarh","Chhattisgarh","Delhi","Goa","Gujarat","Haryana","Jammu & Kashmir","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Odisha","Puducherry","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal"]
-  servicesList=["Accomodation and Shelter Homes","Ambulance","Delivery [Vegetables, Fruits, Groceries, Medicines, etc.]","Other","Hospitals and Centers","Police","Government Helpline","Mental well being and Emotional Support"]
+  servicesList=["Accomodation and Shelter Homes","Ambulance","Delivery [Vegetables, Fruits, Groceries, Medicines, etc.]","Other","Hospitals and Centers","Police","Government Helpline","Mental well being and Emotional Support","CoVID-19 Testing Lab"]
   
 
 
   ngOnInit() {
-    this.dataserv.getHelplines().subscribe(
-        (res)=>{
+    this.dataserv.getHelplines().subscribe((res)=>{
           this.helplines=res;
           console.log(res)
         }
       ,(err)=>{
         console.log(err)
     });
-    console.log(this.helplines);
+
 
     this.searchHelplineForm=this.fb.group({
       state: ['Select the state',Validators.required],
       service: ['Select the service',Validators.required]
-    })
+    });
 
+    this.flag=false
   }
 
   showHelplines(){
+    this.flag=true
     this.result=[]
     if(this.searchHelplineForm.value.service=='all'){
       for(let res of this.helplines){
@@ -55,7 +57,6 @@ export class HelplineComponent implements OnInit {
       }
     }
   }
-    console.log(this.result)
     
   }
 
