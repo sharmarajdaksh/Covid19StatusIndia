@@ -12,6 +12,8 @@ import { BoardComponent } from './home/board/board.component';
 import { HelplineComponent } from './helpline/helpline.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DistrictDetailsComponent } from './district-details/district-details.component';
+import { CountryDetailsComponent } from './country-details/country-details.component';
+import { ChartsModule } from 'ng2-charts'
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { DistrictDetailsComponent } from './district-details/district-details.co
     HomeComponent,
     BoardComponent,
     HelplineComponent,
-    DistrictDetailsComponent
+    DistrictDetailsComponent,
+    CountryDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { DistrictDetailsComponent } from './district-details/district-details.co
     MatButtonModule,
     MatExpansionModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
