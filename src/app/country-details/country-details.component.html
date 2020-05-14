@@ -1,0 +1,82 @@
+<app-navbar></app-navbar>
+<div class="row">
+  <div class="col-md-6">
+    <div *ngIf="stateWiseList" style="margin-top:30px;">
+      <div class="card" style="max-height: 40em;overflow: auto; margin-left: 30px;">
+        <table class="table  table-bordered table-hover rounded" style="border-radius:10%">
+          <thead class="thead-dark">
+          <th scope="col">State/UT</th>
+          <th scope="col">Confirmed</th>
+          <th scope="col">Active</th>
+          <th scope="col">Recovered</th>
+          <th scope="col">Deceased</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of stateWiseList;let i= index" scope="row" style="cursor:pointer" (mouseover)="showDetails(item)">
+              <td>{{item.state}}</td>
+              <td>{{item.confirmed}}</td>
+              <td>{{item.active}}</td>
+              <td>{{item.recovered}}</td>
+              <td>{{item.deaths}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-5 ">
+    <h3 class=" offset-7"  style="margin-top: 30px;">{{state}}</h3>
+    <div class="row offset-3">
+      <div class="card-deck">
+        <div class="card offset-1 text-center shadow p-2 mb-3 rounded" style="width: 20rem;">
+          <div class="card-header text-white bg-warning font-weight-bold" style="font-size: larger;">
+            <h4>Active</h4>
+          </div>
+          <div class="card-body font-weight-bold" style="font-size: large;">
+            <p>{{active}}</p>
+          </div>
+          <div class="card-footer text-center">
+            <p>{{lastUpdated}}</p>
+          </div>
+        </div>
+        <div class="card offset-1 text-center shadow p-2 mb-3 rounded" style="width: 20rem;">
+          <div class="card-header text-white bg-success font-weight-bold" style="font-size: larger;">
+            <h4>Recovered</h4>
+          </div>
+          <div class="card-body font-weight-bold" style="font-size: large;">
+            <p>{{recovered}}</p>
+          </div>
+          <div class="card-footer text-center">
+            <p>{{lastUpdated}}</p>
+          </div>
+        </div>
+        <div class="card offset-1 text-center shadow p-2 mb-3 rounded" style="width: 20rem;">
+          <div class="card-header  text-white bg-danger font-weight-bold" style="font-size: larger;">
+            <h4>Deaths</h4>
+          </div>
+          <div class="card-body font-weight-bold" style="font-size: large;">
+            <p>{{deaths}}</p>
+          </div>
+          <div class="card-footer text-center">
+           <p>{{lastUpdated}}</p>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <div class="row offset-3">
+      <div class="chart-wrapper" style="height:1000px;width:1000px; margin-top:30px;">
+        <canvas baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [colors]="[undefined]"
+                [options]="barChartOptions"
+                [plugins]="barChartPlugins"
+                [legend]="barChartLegend"
+                [chartType]="barChartType">
+        </canvas>
+      </div>
+    </div>
+    </div>
+  </div>
