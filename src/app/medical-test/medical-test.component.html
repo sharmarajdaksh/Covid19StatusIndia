@@ -1,0 +1,83 @@
+<app-navbar></app-navbar>
+
+
+<div class="text-center" *ngIf="quizStart">
+    <img src="../../assets/images/doctor1.png" height="200px" width="200px">
+    <h3>Questions asked will have multiple options regarding you</h3>
+    <h4 class="display-4">Answer the questions Correctly!</h4>
+    <div class="row">
+        <button class="offset-5 col-md-2 btn btn-success" (click)="startTest()">Start Test</button>
+    </div>
+</div>
+
+<div *ngIf="!quizStart && count<4" class="text-center">    
+    <h3 class="display-4">Remember</h3>
+    <h4>More accurate Answers will help us in knowing you better!</h4>
+    <div class="bg-light" style="margin-top: 20px; height: 250px;">
+        
+        <div class="row">
+            <div class="col-md-4">
+                <img src="../../assets/images/nurse.png" height="200px" width="200px">
+            </div>
+            <div class="col-md-6">
+                 <h3 style="margin-top: 8px;">Question</h3>
+                 <h4 class="font-weight-bold" style="margin-top: 16px;">{{currentQues.statement}}</h4>
+                 <button class=" col-md-1 btn btn-outline-danger" style="margin-top: 8px;"(click)="optionClicked(1)">Yes</button>
+                 <button class="offset-1 col-md-1 btn btn-outline-success" style="margin-top: 8px;" (click)="optionClicked(0)">No</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div *ngIf="count==3" class="text-center offset-2 col-md-8">
+    <h4 class="display-4">Problems</h4>
+    <ul class="list-group">
+        <li class="list-group-item">Heart disease</li>
+        <li class="list-group-item">Lung disease</li>
+        <li class="list-group-item">Diabetes</li>
+        <li class="list-group-item">HyperTension</li>
+    </ul>
+</div>
+
+
+<div *ngIf="count==4" class="offset-2 col-md-8">
+    <div class="text-center" >
+        <img src="../../assets/images/doctor-report.png" height="200px" width="200px">
+        <h3>Results!</h3>
+        <div [ngClass]="resultClass"> 
+            {{result}}
+        </div>
+        <p>These results are based on your answers! Your results only tells you about your chances of getting infected. Kindly take all the precautions</p>
+        <button class="btn btn-success col-md-2" (click)="submitData()">Submit your data</button>
+        <button class="btn btn-dark offset-1 col-md-2" (click)="restartTest()">Retest</button>
+    </div>
+</div>
+
+
+
+<mat-card class="offset-1 col-md-10" style="margin-top: 32px;" *ngIf="quizOver">
+    <h2 class="text-center font-weight-bold">Enter your details for test!</h2>
+    <form  [formGroup]=userDetailsForm class="row">
+        <mat-form-field class="col-md-2">
+            <input matInput type="text" name="title" formControlName="name" placeholder="Full name" MatformfieldControl>
+            <mat-error *ngIf="userDetailsForm.controls.name.invalid">Please enter a your name</mat-error>
+        </mat-form-field >
+        <mat-form-field class="offset-2 col-md-2">
+            <input matInput type="number"  formControlName="age" placeholder="age" MatformfieldControl>
+            <mat-error *ngIf="userDetailsForm.controls.age.invalid">Please enter age</mat-error>
+        </mat-form-field>
+        <mat-form-field class="offset-2 col-md-2">
+                <mat-label>State</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let state of statesList" value={{state}}>
+                    {{state}}
+                  </mat-option>
+                </mat-select>
+            <mat-error *ngIf="userDetailsForm.controls.state.invalid">Please choose your state</mat-error>
+        </mat-form-field><br>
+        <button mat-raised-button style="background-color: rgb(6, 156, 131);height: 35px; margin-top: 6px; margin-left: 7px;" type="submit">Save Details</button>
+    </form>
+    </mat-card>
+
