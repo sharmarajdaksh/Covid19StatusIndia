@@ -12,12 +12,14 @@
         <div class="form-group col-md-2">
             <label for="city">Select the city</label>
             <select class="form-control" formControlName="city" id="city">
+                <option value="">---select city---</option>
                 <option *ngFor="let city of cities" value={{city}}>{{city}}</option>
             </select>
         </div>
         <div class="form-group col-md-2">
             <label for="service">Select the service</label>
             <select class="form-control" formControlName="service" id="service">
+                <option value="">---select service---</option>
                 <option value="all">All Services</option>
                 <option *ngFor="let service of servicesList" value={{service}}>{{service}}</option>
             </select>

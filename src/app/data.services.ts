@@ -16,6 +16,13 @@ export class DataService {
       return this.http.get<Data>("https://api.covid19india.org/data.json")
   }
 
+  getStateDailyData():Observable<any[]>{
+    return this.http.get<any[]>("https://api.covid19india.org/states_daily.json").pipe(map(res=>{
+      let list = [];
+      list = res['states_daily'];
+      return list;    
+    }))
+  }
 
 
   getHelplines():Observable<any[]>{

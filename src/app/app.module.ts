@@ -14,9 +14,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DistrictDetailsComponent } from './district-details/district-details.component';
 import { CountryDetailsComponent } from './country-details/country-details.component';
 import { ChartsModule } from 'ng2-charts';
+import { FilterStatePipe } from './Pipes/filter-state.pipe'
 import { MedicalTestComponent } from './medical-test/medical-test.component'
 import { MatCarouselModule} from '@ngmodule/material-carousel';
 import { CarouselComponent } from './home/carousel/carousel.component'
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { CarouselComponent } from './home/carousel/carousel.component'
     DistrictDetailsComponent,
     CountryDetailsComponent,
     MedicalTestComponent,
-    CarouselComponent
+    CarouselComponent,
+    FilterStatePipe
   ],
   imports: [
     BrowserModule,
