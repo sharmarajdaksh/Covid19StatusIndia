@@ -5,13 +5,15 @@ import { HomeComponent } from './home/home.component';
 import { HelplineComponent } from './helpline/helpline.component';
 import { DistrictDetailsComponent } from './district-details/district-details.component';
 import { CountryDetailsComponent } from './country-details/country-details.component';
+import { MedicalTestComponent } from './medical-test/medical-test.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
   {path: 'home',component:HomeComponent},
   {path: 'helpline',component: HelplineComponent},
   { path: 'district', component: DistrictDetailsComponent },
-  { path: 'country', component: CountryDetailsComponent }
+  { path: 'country', component: CountryDetailsComponent },
+  {path: 'test',component: MedicalTestComponent}
 ];
 
 @NgModule({
