@@ -15,6 +15,8 @@ import { DistrictDetailsComponent } from './district-details/district-details.co
 import { CountryDetailsComponent } from './country-details/country-details.component';
 import { ChartsModule } from 'ng2-charts';
 import { MedicalTestComponent } from './medical-test/medical-test.component'
+import { MatCarouselModule} from '@ngmodule/material-carousel';
+import { CarouselComponent } from './home/carousel/carousel.component'
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { MedicalTestComponent } from './medical-test/medical-test.component'
     HelplineComponent,
     DistrictDetailsComponent,
     CountryDetailsComponent,
-    MedicalTestComponent
+    MedicalTestComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,7 @@ import { MedicalTestComponent } from './medical-test/medical-test.component'
     MatInputModule,
     MatCardModule,
     MatSelectModule,
-  
+    MatCarouselModule,
     FormsModule,
     ReactiveFormsModule,
     ChartsModule

@@ -3,20 +3,26 @@
     <h2 class="text-center display-4">Search for the Helplines details!</h2>
     <form [formGroup]=searchHelplineForm (ngSubmit)="showHelplines()">
         <div class="row">
-        <div class="form-group offset-2 col-md-3">
+        <div class="form-group offset-2 col-md-2" (mouseleave)="selectCities()">
             <label for="state">Select the state</label>
             <select class="form-control" formControlName="state" id="state">
                 <option *ngFor="let state of statesList" value={{state}}>{{state}}</option>
             </select>
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-2">
+            <label for="city">Select the city</label>
+            <select class="form-control" formControlName="city" id="city">
+                <option *ngFor="let city of cities" value={{city}}>{{city}}</option>
+            </select>
+        </div>
+        <div class="form-group col-md-2">
             <label for="service">Select the service</label>
             <select class="form-control" formControlName="service" id="service">
                 <option value="all">All Services</option>
                 <option *ngFor="let service of servicesList" value={{service}}>{{service}}</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-success" style="height: 35px;margin-top: 32px;">Search</button>
+        <button type="submit" class="btn btn-success" style="height: 35px;margin-top: 32px;" >Search</button>
     </div>   
     </form>
 </div>
@@ -41,6 +47,7 @@
     </table>
 </div>
 
-<div *ngIf="result.length==0 && flag">
-    <h2 class="text-center display-4 text-danger">No services Available!</h2>
+<div *ngIf="result.length==0 && flag" class="text-center">
+    <img src="../../assets/images/not-found-1.png" height="300px" width="250px">
+    <h2 class=" display-4 text-danger">No services Available!</h2>
 </div>
