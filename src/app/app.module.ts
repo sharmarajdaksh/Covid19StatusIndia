@@ -13,7 +13,8 @@ import { HelplineComponent } from './helpline/helpline.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DistrictDetailsComponent } from './district-details/district-details.component';
 import { CountryDetailsComponent } from './country-details/country-details.component';
-import { ChartsModule } from 'ng2-charts'
+import { ChartsModule } from 'ng2-charts';
+import { FilterStatePipe } from './Pipes/filter-state.pipe'
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ChartsModule } from 'ng2-charts'
     BoardComponent,
     HelplineComponent,
     DistrictDetailsComponent,
-    CountryDetailsComponent
+    CountryDetailsComponent,
+    FilterStatePipe
   ],
   imports: [
     BrowserModule,

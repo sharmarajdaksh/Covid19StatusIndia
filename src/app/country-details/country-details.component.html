@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
 <div class="row">
   <div class="col-md-6">
+    <input class="form-control" [(ngModel)]="searchText" placeholder="Search by state" style="margin-top: 30px;margin-left: 30px;width:57em;">
     <div *ngIf="stateWiseList" style="margin-top:30px;">
       <div class="card" style="max-height: 40em;overflow: auto; margin-left: 30px;">
         <table class="table  table-bordered table-hover rounded" style="border-radius:10%">
@@ -12,7 +13,7 @@
           <th scope="col">Deceased</th>
           </thead>
           <tbody>
-            <tr *ngFor="let item of stateWiseList;let i= index" scope="row" style="cursor:pointer" (mouseover)="showDetails(item)">
+            <tr *ngFor="let item of stateWiseList | filterState:searchText " scope="row" style="cursor:pointer" (mouseover)="showDetails(item)">
               <td>{{item.state}}</td>
               <td>{{item.confirmed}}</td>
               <td>{{item.active}}</td>
@@ -25,8 +26,8 @@
     </div>
   </div>
   <div class="col-md-5 ">
-    <h3 class=" offset-7"  style="margin-top: 30px;">{{state}}</h3>
-    <div class="row offset-3">
+    <h3 class=" offset-6"  style="margin-top: 30px;">{{state}}</h3>
+    <div class="row offset-2">
       <div class="card-deck">
         <div class="card offset-1 text-center shadow p-2 mb-3 rounded" style="width: 20rem;">
           <div class="card-header text-white bg-warning font-weight-bold" style="font-size: larger;">
@@ -65,8 +66,8 @@
 
       </div>
     </div>
-    <div class="row offset-3">
-      <div class="chart-wrapper" style="height:1000px;width:1000px; margin-top:30px;">
+    <div class="row offset-2" style="max-height: 20em;overflow: auto;margin-top:30px;" >
+      <div class="chart-wrapper" style="height:1000px;width:1000px; ">
         <canvas baseChart
                 [datasets]="barChartData"
                 [labels]="barChartLabels"
@@ -77,6 +78,19 @@
                 [chartType]="barChartType">
         </canvas>
       </div>
+      <div class="chart-wrapper" style="height: 50em;width: 50em;margin-top: -40em;padding-bottom: -100px;">
+        <canvas baseChart
+                [datasets]="lineChartDataset"
+                [labels]="lineChartLabels"
+                [colors]="[undefined]"
+                [options]="lineChartOptions"
+                [plugins]="lineChartPlugins"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType"
+                ></canvas>
+    </div>
+  
     </div>
     </div>
   </div>
+    
