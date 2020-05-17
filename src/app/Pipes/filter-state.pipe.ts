@@ -10,7 +10,6 @@ export class FilterStatePipe implements PipeTransform {
     if(!items) return [];
     if(!searchText) return items;
     return items.filter(it=>{
-      console.log((it.state).toLowerCase().includes(searchText))
       return (it.state).toLowerCase().includes(searchText)
     });
   }
