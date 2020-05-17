@@ -16,6 +16,8 @@ import { CountryDetailsComponent } from './country-details/country-details.compo
 import { ChartsModule } from 'ng2-charts';
 import { FilterStatePipe } from './Pipes/filter-state.pipe'
 import { MedicalTestComponent } from './medical-test/medical-test.component'
+import { MatCarouselModule} from '@ngmodule/material-carousel';
+import { CarouselComponent } from './home/carousel/carousel.component'
 
 
 @NgModule({
@@ -27,8 +29,9 @@ import { MedicalTestComponent } from './medical-test/medical-test.component'
     HelplineComponent,
     DistrictDetailsComponent,
     CountryDetailsComponent,
-    FilterStatePipe,
-    MedicalTestComponent
+    MedicalTestComponent,
+    CarouselComponent,
+    FilterStatePipe
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,7 @@ import { MedicalTestComponent } from './medical-test/medical-test.component'
     MatInputModule,
     MatCardModule,
     MatSelectModule,
-  
+    MatCarouselModule,
     FormsModule,
     ReactiveFormsModule,
     ChartsModule
