@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Question } from './question.model';
+import { UserDetailsModel } from '../Models/userDetails.model';
+import { UserDetailsService } from '../Services/user-details.service';
 
 @Component({
   selector: 'app-medical-test',
@@ -8,12 +10,12 @@ import { Question } from './question.model';
   styleUrls: ['./medical-test.component.css']
 })
 export class MedicalTestComponent implements OnInit {
-
   userDetailsForm: FormGroup;
   quizOver=false;
   quizStart=true;
   result: string;
   resultClass:string;
+  stateSelected:string;
   score=0
   count=0
   statesList= ["Andaman & Nicobar","Andhra Pradesh","Assam","Bihar","Chandigarh","Chhattisgarh","Delhi","Goa","Gujarat","Haryana","Jammu & Kashmir","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Odisha","Puducherry","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal"]
@@ -24,7 +26,7 @@ export class MedicalTestComponent implements OnInit {
                         {statement:"Contact someone who is tested Positive for COVID-19 or works in hospital?",optionA:"No",optionB:"Yes"},
                       {statement: "Do you have any of following problems/diseases?",optionA:"No",optionB:"Yes"}]
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,private userDetailsService:UserDetailsService) { }
 
   ngOnInit() {
     this.userDetailsForm=this.fb.group({
@@ -74,6 +76,25 @@ export class MedicalTestComponent implements OnInit {
     this.count=0
     this.quizStart=true
     this.quizOver=false
+  }
+  changeState(event:any){
+    console.log(event.value)
+    this.stateSelected= event.value;
+  }
+  onSave(){
+    var userDetail = new UserDetailsModel()
+    userDetail.name= this.userDetailsForm.controls.name.value;
+    userDetail.age= this.userDetailsForm.controls.age.value;
+    userDetail.email= this.userDetailsForm.controls.email.value;
+    userDetail.testResult= this.result;
+    userDetail.state= this.stateSelected;
+    console.log(userDetail)
+    // this.userDetailsService.saveUser(userDetail).subscribe(data=>{
+    //   alert(data)
+    // })
+
+    
+    
   }
 
 }

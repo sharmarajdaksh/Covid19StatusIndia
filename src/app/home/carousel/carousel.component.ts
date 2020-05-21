@@ -15,7 +15,7 @@ export class CarouselComponent implements OnInit {
   public parentHeight = '600px';
   public timings = '250ms ease-in';
   public autoplay = true;
-  public interval = 3000;
+  public interval = 3000;o
   public loop = true;
   public hideArrows = false;
   public hideIndicators = false;
