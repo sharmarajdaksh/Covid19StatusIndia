@@ -30,7 +30,8 @@ export class MedicalTestComponent implements OnInit {
     this.userDetailsForm=this.fb.group({
       name: [null,Validators.required],
       age: [null,Validators.required],
-      state: [null,Validators.required]
+      state: [null,Validators.required],
+      email: [null, [Validators.required,Validators.email]]
     });
   }
 

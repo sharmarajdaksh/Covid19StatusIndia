@@ -61,14 +61,18 @@
     <h2 class="text-center font-weight-bold">Enter your details for test!</h2>
     <form  [formGroup]=userDetailsForm class="row">
         <mat-form-field class="col-md-2">
-            <input matInput type="text" name="title" formControlName="name" placeholder="Full name" MatformfieldControl>
+            <input matInput type="text"  formControlName="name" placeholder="Full name" MatformfieldControl>
             <mat-error *ngIf="userDetailsForm.controls.name.invalid">Please enter a your name</mat-error>
         </mat-form-field >
-        <mat-form-field class="offset-2 col-md-2">
+        <mat-form-field class="offset-1 col-md-2">
+            <input matInput type="email" formControlName="email" placeholder="Email" MatformfieldControl>
+            <mat-error *ngIf="userDetailsForm.controls.email.invalid">Please enter a valid email</mat-error>
+        </mat-form-field >
+        <mat-form-field class="offset-1 col-md-1">
             <input matInput type="number"  formControlName="age" placeholder="age" MatformfieldControl>
             <mat-error *ngIf="userDetailsForm.controls.age.invalid">Please enter age</mat-error>
         </mat-form-field>
-        <mat-form-field class="offset-2 col-md-2">
+        <mat-form-field class="offset-1 col-md-2">
                 <mat-label>State</mat-label>
                 <mat-select>
                   <mat-option *ngFor="let state of statesList" value={{state}}>

@@ -52,7 +52,7 @@ export class DistrictDetailsComponent implements OnInit {
         this.result.push(val)
       }
     
-  }
+    }
 }
 
 showState(state: string){
