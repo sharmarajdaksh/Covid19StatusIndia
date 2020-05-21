@@ -11,7 +11,7 @@ app.listen(port,()=>{
 // app.use(bodyparser)
 app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({extended:true}))
-app.use(userRouter)
+
 app.use(cors())
 app.use(express.json())
 app.use((req,res,next)=>{
@@ -22,3 +22,4 @@ app.use((req,res,next)=>{
     next();
 
 })
+app.use(userRouter);
