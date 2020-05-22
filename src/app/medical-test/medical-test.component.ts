@@ -89,9 +89,9 @@ export class MedicalTestComponent implements OnInit {
     userDetail.testResult= this.result;
     userDetail.state= this.stateSelected;
     console.log(userDetail)
-    // this.userDetailsService.saveUser(userDetail).subscribe(data=>{
-    //   alert(data)
-    // })
+    this.userDetailsService.saveUser(userDetail).subscribe(data=>{
+      console.log(data)
+    })
 
     
     

@@ -50,7 +50,7 @@ router.post('/api/userdetails',async(req,res)=>{
     console.log(user)
     try{
         await user.save()
-        res.send(user)
+        res.send("Successfully Added!")
     }
     catch(error){
         res.status(500).send(error)

@@ -12,9 +12,9 @@ export class UserDetailsService {
 
   constructor(private _http:HttpClient) { }
 
-  // saveUser(userDetails:UserDetailsModel):Observable<UserDetailsModel>{
-  //   return this._http.post<UserDetailsModel>('http://localhost:3000/api/userdetails/',userDetails)
-  // }
+  saveUser(userDetails:UserDetailsModel):Observable<string>{
+    return this._http.post<string>('http://localhost:3000/api/userdetails/',userDetails)
+  }
   // getUser(email:string):Observable<UserDetailsModel>{
   //   return this._http.get<UserDetailsModel>('http://localhost:3000/userdetails/',email)
   // }
