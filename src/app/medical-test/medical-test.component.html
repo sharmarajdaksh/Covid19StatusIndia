@@ -84,4 +84,13 @@
         <button mat-raised-button style="background-color: rgb(6, 156, 131);height: 35px; margin-top: 6px; margin-left: 7px;" type="submit">Save Details</button>
     </form>
     </mat-card>
+    <div class="offet-2 col-md-8" style="margin-left: 30em;margin-right: 30em;"></div>
+    <div class=" alert alert-danger alert-dismissible fade show " *ngIf="errorAddMsg">
+        <h1>An Error Occurred in Post Method!</h1>
+        <p>{{errorAddMsg}}</p>
+    </div>
+    <div class=" alert alert-danger alert-dismissible fade show " *ngIf="errorUpdateMsg">
+        <h1>An Error Occurred in Update Method!</h1>
+        <p>{{errorUpdateMsg}}</p>
+    </div>
 

@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Question } from './question.model';
 import { UserDetailsModel } from '../Models/userDetails.model';
 import { UserDetailsService } from '../Services/user-details.service';
+import { map } from 'rxjs/operators';
+import { error } from 'protractor';
 
 @Component({
   selector: 'app-medical-test',
@@ -16,6 +18,9 @@ export class MedicalTestComponent implements OnInit {
   result: string;
   resultClass:string;
   stateSelected:string;
+  errorGetMsg:string;
+  errorAddMsg:string;
+  errorUpdateMsg:string;
   score=0
   count=0
   statesList= ["Andaman & Nicobar","Andhra Pradesh","Assam","Bihar","Chandigarh","Chhattisgarh","Delhi","Goa","Gujarat","Haryana","Jammu & Kashmir","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Odisha","Puducherry","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal"]
@@ -88,12 +93,30 @@ export class MedicalTestComponent implements OnInit {
     userDetail.email= this.userDetailsForm.controls.email.value;
     userDetail.testResult= this.result;
     userDetail.state= this.stateSelected;
+    let datastring:string= "User exist with"+userDetail.email;
+    let isMatched:boolean=false;
+    this.userDetailsService.getUser(userDetail.email).subscribe(data=>{
+     if(datastring == data){
+       isMatched= true;
+     }
+    },error=>{
+      this.errorGetMsg= error.message;
+    })
+    if(!isMatched){
     this.userDetailsService.saveUser(userDetail).subscribe(data=>{
       console.log(data)
+    },error=>{
+      this.errorAddMsg= error.message;
     })
+    }
+    else{
+      this.userDetailsService.updateUser(userDetail.email,userDetail).subscribe((data)=>{
+        console.log(data)
+      },error=>{
+        this.errorUpdateMsg= error.message
+      })
+    }
 
-    
-    
   }
 
 }

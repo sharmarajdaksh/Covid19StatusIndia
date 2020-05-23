@@ -86,39 +86,29 @@ export class CountryDetailsComponent implements OnInit {
        }
       
     })
-    
-
     this._service.getStateDailyData().subscribe(res=>{
       for(let index=0; index<res.length;index++){
         if(res[index]['status'] == "Confirmed"){
             this.daily_changes.push(res[index]);
+
         }
       }
-    })
-    
-
-  }
-  ngAfterInit(){
-    let idx :number=0;
-    let value:number=0;
-  //  console.log(this.daily_changes)
-  //console.log(this.states_codes);
-    while(idx < this.daily_changes.length){
-      for(let i=0;i<this.states_codes.length;i++){
-        value = value  + (Number(this.daily_changes[idx][this.states_codes[i]]))
+      let index1:number=0;
+      let value:number=0;
+      while(index1 < this.daily_changes.length){
+        for(let i=0;i<this.states_codes.length;i++){
+          value = value  + (Number(this.daily_changes[index1][this.states_codes[i]]))
+        }
+        this.lineChartDataset[0].data.push(value);
+        this.dates_List.push(this.daily_changes[index1]['date'])  
+        value =0;
+        index1 = index1+6;
       }
-      this.lineChartDataset[0].data.push(value);
-      this.dates_List.push(this.daily_changes[idx]['date'])  
-      value =0;
-      idx = idx+6;
-    }
-    console.log(this.lineChartDataset[0].data);
-    console.log(this.lineChartDataset[0].label);
-
-    this.lineChartLabels= this.dates_List;
-    this.lineChartDataset[0].label= "Day wise data of" + ' ' + this.state;
-    
+      this.lineChartLabels= this.dates_List;
+      this.lineChartDataset[0].label= "Day wise data of" + ' ' + this.state;
+    })
   }
+
   public showDetails(obj: StateDataModel) {
 
     this.lineChartDataset[0].data= [];

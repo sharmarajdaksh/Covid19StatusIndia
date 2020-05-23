@@ -13,30 +13,15 @@ router.get('/api/userdetails',async (req,res)=>{
     }
 })
 
-// get method to search by state
-// router.get('/userdetails/:state',async(req,res)=>{
-//     const _state= req.params.state
-//     try{
-//         const user= await UserDetails.find({state:_state})
-//         if(!user){
-//             return res.status(400).send("No User gave a test in",_state)
-//         }
-//         res.send(user)
-//     }
-//     catch(error){
-//         res.status(500).send(error)
-//     }
-// })
-
+//search by email
 router.get('/api/userdetails/:email',async(req,res)=>{
     const _email= req.params.email
-    console.log(_email)
         try{
         const user= await UserDetails.findOne({email:_email})
         if(!user){
-            return res.status(400).send("No user exist with ",_email,"emailId")
+            return res.status(400).send("No user exist with "+_email+"emailId")
         }
-        res.send(user)
+        res.send("User exist with"+_email)
     }
     catch(error){
         res.status(500).send(error)
@@ -45,12 +30,10 @@ router.get('/api/userdetails/:email',async(req,res)=>{
 
 //post method
 router.post('/api/userdetails',async(req,res)=>{
-    console.log(req.body)
     const user=new UserDetails(req.body)
-    console.log(user)
     try{
         await user.save()
-        res.send("Successfully Added!")
+        res.send(user)
     }
     catch(error){
         res.status(500).send(error)
@@ -60,9 +43,7 @@ router.post('/api/userdetails',async(req,res)=>{
 //update
 router.patch('/api/userdetails/:email',async(req,res)=>{
     const _email= req.params.email
-   // console.log(_email)
     const updates= Object.keys(req.body)
-    //console.log(updates)
     const allowedUpdates = ['testResult']
     const isValidUpdate= updates.every((update)=>{
         return allowedUpdates.includes(update)
@@ -73,10 +54,8 @@ router.patch('/api/userdetails/:email',async(req,res)=>{
     try{
         const user= await UserDetails.findOneAndUpdate({email:_email},req.body,{new:true,runValidators:true})
         if(!user){
-            return res.status(400).send("No user exist with ",_email)
+            return res.status(400).send("No user exist with "+_email)
         }
-       // const result= await user.updateOne({password:req.body})
-       console.log(user)
         res.send(user)
     }
     catch(error){
