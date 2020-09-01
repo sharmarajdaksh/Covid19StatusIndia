@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~8.0.0",
+    "@angular/animations": "^8.0.3",
     "@angular/cdk": "~8.2.3",
     "@angular/common": "~8.0.0",
     "@angular/compiler": "~8.0.0",
@@ -30,6 +30,8 @@
     "express": "^4.17.1",
     "mongoose": "^5.9.15",
     "ng2-charts": "^2.3.0",
+    "ng2-google-charts": "^6.1.0",
+    "ngx-toastr": "^11.3.3",
     "nodemon": "^2.0.4",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",

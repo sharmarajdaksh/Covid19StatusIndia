@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.services';
-import { DistrictData } from '../districtData.model';
+import { DataService } from '../../data.services';
+import { DistrictData } from '../../Models/districtData.model';
 
 @Component({
   selector: 'app-district-details',

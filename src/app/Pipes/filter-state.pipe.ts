@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { StateDataModel } from '../stateData.model';
+import { StateDataModel } from '../Models/stateData.model';
 
 @Pipe({
   name: 'filterState'

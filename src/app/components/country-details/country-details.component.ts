@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.services';
-import { Data } from '../data.model';
-import { StateDataModel } from '../stateData.model';
+import { DataService } from '../../data.services';
+import { Data } from '../../Models/data.model';
+import { StateDataModel } from '../../Models/stateData.model';
 import { ChartOptions, ChartType, ChartDataSets, ChartPluginsOptions } from 'chart.js';
 import { Label, Color } from 'ng2-charts';
 

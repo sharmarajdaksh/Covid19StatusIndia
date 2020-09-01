@@ -1,8 +1,9 @@
 import { Component, OnInit,Input } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Question } from './question.model';
-import { UserDetailsModel } from '../Models/userDetails.model';
-import { UserDetailsService } from '../Services/user-details.service';
+import { UserDetailsModel } from '../../Models/userDetails.model';
+import { UserDetailsService } from '../../Services/user-details.service';
 import { map } from 'rxjs/operators';
 import { error } from 'protractor';
 
@@ -31,7 +32,7 @@ export class MedicalTestComponent implements OnInit {
                         {statement:"Contact someone who is tested Positive for COVID-19 or works in hospital?",optionA:"No",optionB:"Yes"},
                       {statement: "Do you have any of following problems/diseases?",optionA:"No",optionB:"Yes"}]
 
-  constructor(private fb: FormBuilder,private userDetailsService:UserDetailsService) { }
+  constructor(private fb: FormBuilder,private userDetailsService:UserDetailsService,private toastr: ToastrService) { }
 
   ngOnInit() {
     this.userDetailsForm=this.fb.group({
@@ -87,35 +88,7 @@ export class MedicalTestComponent implements OnInit {
     this.stateSelected= event.value;
   }
   onSave(){
-    var userDetail = new UserDetailsModel()
-    userDetail.name= this.userDetailsForm.controls.name.value;
-    userDetail.age= this.userDetailsForm.controls.age.value;
-    userDetail.email= this.userDetailsForm.controls.email.value;
-    userDetail.testResult= this.result;
-    userDetail.state= this.stateSelected;
-    let datastring:string= "User exist with"+userDetail.email;
-    let isMatched:boolean=false;
-    this.userDetailsService.getUser(userDetail.email).subscribe(data=>{
-     if(datastring == data){
-       isMatched= true;
-     }
-    },error=>{
-      this.errorGetMsg= error.message;
-    })
-    if(!isMatched){
-    this.userDetailsService.saveUser(userDetail).subscribe(data=>{
-      console.log(data)
-    },error=>{
-      this.errorAddMsg= error.message;
-    })
-    }
-    else{
-      this.userDetailsService.updateUser(userDetail.email,userDetail).subscribe((data)=>{
-        console.log(data)
-      },error=>{
-        this.errorUpdateMsg= error.message
-      })
-    }
+    this.toastr.success('Data Saved!');
 
   }
 

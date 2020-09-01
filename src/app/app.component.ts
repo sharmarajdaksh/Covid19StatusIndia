@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient} from '@angular/common/http'
 import { DataService } from './data.services';
-import { Data } from './data.model';
+import { Data } from './Models/data.model';
 
 
 @Component({

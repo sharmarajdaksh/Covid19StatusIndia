@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
-import { HelplineComponent } from './helpline/helpline.component';
-import { DistrictDetailsComponent } from './district-details/district-details.component';
-import { CountryDetailsComponent } from './country-details/country-details.component';
-import { MedicalTestComponent } from './medical-test/medical-test.component';
+import { HelplineComponent } from './components/helpline/helpline.component';
+import { DistrictDetailsComponent } from './components/district-details/district-details.component';
+import { CountryDetailsComponent } from './components/country-details/country-details.component';
+import { MedicalTestComponent } from './components/medical-test/medical-test.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},

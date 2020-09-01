@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.services';
-import { Helpline } from '../helpline.model';
+import { DataService } from '../../data.services';
+import { Helpline } from '../../Models/helpline.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
