@@ -9,7 +9,7 @@ import { Orientation } from '@ngmodule/material-carousel';
 })
 export class CarouselComponent implements OnInit {
 
-  public slidesList = ["../../../assets/images/carousel-1.png","../../../assets/images/img3.png","../../../assets/images/img2.jpg"];
+  public slidesList = ["assets/images/carousel-1.png","assets/images/img3.png","assets/images/img2.jpg"];
   public showContent = false;
 
   public parentHeight = '600px';
