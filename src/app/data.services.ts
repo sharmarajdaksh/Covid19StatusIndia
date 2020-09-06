@@ -3,7 +3,7 @@ import {HttpClient, HttpParams} from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { Data } from './Models/data.model';
 import {map} from 'rxjs/operators';
-import { Helpline } from './models/helpline.model';
+import { Helpline } from './Models/helpline.model';
 
 
 @Injectable({
